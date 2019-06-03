@@ -1,8 +1,8 @@
 import VueRouter from 'vue-router';
 import Vue from "vue";
-import Country from '../components/Country';
-import Helloworld from "../components/HelloWorld";
-import axios from 'axios';
+
+const Country = () => import("../components/Country");
+const Helloworld = () => import("../components/HelloWorld");
 
 Vue.use(VueRouter);
 
