@@ -9,7 +9,6 @@
             append-icon="search"
             clearable
             @input="searchCountries"
-            @keyup="keyBoardCheck"
             v-model="searchValue"
           ></v-text-field>
         </v-flex>
@@ -56,11 +55,11 @@
 
 <script>
 import axios from "axios";
-import Flaglayouts from "./FlagComponent";
+// import Flaglayouts from "./FlagComponent";
 
 export default {
   components: {
-    Flaglayouts
+   Flaglayouts: () => import("./FlagComponent")
   },
 
   data: () => ({
@@ -149,11 +148,6 @@ export default {
         });
       }
     },
-
-    keyBoardCheck(event) {
-      if (event.keyCode === 8) {
-      }
-    }
   },
 
   created() {

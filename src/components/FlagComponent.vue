@@ -6,13 +6,12 @@
   </v-container>
 </template>
 <script>
-import Flagcards from './FlagCard'
 
 export default {
   name: "Flaglayouts",
   props: ["data"],
   components:{
-    Flagcards,
+     Flagcards: () => import("./FlagCard")
   },
   methods:{
     testFunction(country){

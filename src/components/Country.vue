@@ -116,15 +116,14 @@
 <script>
 import axios from "axios";
 import { latLng } from "leaflet";
-import { LMap, LTileLayer, LGeoJson} from "vue2-leaflet";
 
 export default {
   name: "Country",
   props: ["countryName"],
   components: {
-    LMap,
-    LTileLayer,
-    LGeoJson
+    LMap: () => import('vue2-leaflet').then(({ LMap }) => LMap),
+    LGeoJson: () => import('vue2-leaflet').then(({ LGeoJson }) => LGeoJson),
+    LTileLayer: () => import('vue2-leaflet').then(({ LTileLayer }) => LTileLayer)
   },
 
   data: () => ({
@@ -193,6 +192,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+// @import "../node_modules/leaflet/dist/leaflet.css";
+
 .d-flex-wrap {
   display: flex;
   flex-wrap: wrap;
