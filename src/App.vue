@@ -6,8 +6,8 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat block large @click="toggleDarkMode">
-          <v-icon left>opacity</v-icon>Dark Mode
+        <v-btn flat block large @click="toggleDarkMode('desktop')">
+          <v-icon left>opacity</v-icon>{{DorL}} Mode 
         </v-btn>
         <v-btn flat block large @click="dialog = !dialog">
           <v-icon left>info</v-icon>About
@@ -19,8 +19,8 @@
     </v-toolbar>
     <v-navigation-drawer v-model="drawer" :mini-variant="mini" :dark="darkMode" temporary fixed class="navigation-drawer-z">
       <v-list class="pa-2">
-        <v-btn flat block large @click="toggleDarkMode">
-          <v-icon left>opacity</v-icon>Dark Mode
+        <v-btn flat block large @click="toggleDarkMode('mobile')">
+          <v-icon left>opacity</v-icon>{{DorL}} Mode
         </v-btn>
         <v-btn flat block large @click="toggleAboutModal">
           <v-icon left>info</v-icon>About
@@ -38,7 +38,6 @@
           <v-card-actions></v-card-actions>
         </v-card>
       </v-dialog>
-
       <main>
         <router-view/>
       </main>
@@ -54,13 +53,15 @@ export default {
     drawer: null,
     mini: false,
     darkMode: false,
-    dialog: false
+    dialog: false,
+    DorL: 'Dark'
   }),
 
   methods: {
-    toggleDarkMode() {
-      this.drawer   = !this.drawer; 
+    toggleDarkMode(text) {
+      text === 'mobile' ? this.drawer   = !this.drawer : null;
       this.darkMode = !this.darkMode;
+      this.DorL = this.DorL === 'Dark' ? 'Light' : 'Dark';
     },
     goToHomePage() {
       this.$router.push("/");
