@@ -17,12 +17,12 @@
         <v-toolbar-side-icon slot="activator" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       </v-menu>
     </v-toolbar>
-    <v-navigation-drawer v-model="drawer" :mini-variant="mini" absolute :dark="darkMode" temporary>
+    <v-navigation-drawer v-model="drawer" :mini-variant="mini" :dark="darkMode" temporary fixed class="navigation-drawer-z">
       <v-list class="pa-2">
         <v-btn flat block large @click="toggleDarkMode">
           <v-icon left>opacity</v-icon>Dark Mode
         </v-btn>
-        <v-btn flat block large @click="dialog = !dialog">
+        <v-btn flat block large @click="toggleAboutModal">
           <v-icon left>info</v-icon>About
         </v-btn>
         <v-divider dark></v-divider>
@@ -30,13 +30,10 @@
     </v-navigation-drawer>
     <v-content>
       <v-dialog v-model="dialog" width="500">
-        <v-card light>
-          <v-card-title class="headline grey lighten-2" primary-title>About This!</v-card-title>
+        <v-card>
+          <v-card-title class="headline lighten-2" primary-title>About This!</v-card-title>
           <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            A rest countries API product done using Vue.
           </v-card-text>
           <v-card-actions></v-card-actions>
         </v-card>
@@ -62,10 +59,15 @@ export default {
 
   methods: {
     toggleDarkMode() {
+      this.drawer   = !this.drawer; 
       this.darkMode = !this.darkMode;
     },
     goToHomePage() {
       this.$router.push("/");
+    },
+    toggleAboutModal(){
+      this.drawer = !this.drawer;
+      this.dialog = !this.dialog;
     }
   }
 };
@@ -82,6 +84,10 @@ export default {
 
 .cursor-p {
   cursor: pointer;
+}
+
+.navigation-drawer-z{
+  z-index: 1005 !important;
 }
 </style>
 
