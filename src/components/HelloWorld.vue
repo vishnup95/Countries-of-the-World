@@ -98,7 +98,8 @@ export default {
       })
       .catch(err => {
         this.isLoading = false;
-        console.log(err);
+        /* eslint-disable */
+        console.error(err)
       });
   },
 

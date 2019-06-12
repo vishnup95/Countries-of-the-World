@@ -76,7 +76,7 @@
       <v-layout wrap>
         <v-flex xs12 md6>
           <v-flex class="text-xs-left">
-            <p class="headline mb-0">Languages And Currencies</p>
+            <p class="headline mb-0">Languages</p>
             <v-divider></v-divider>
             <template v-for="language in countryData.languages">
               <span :key="language.name" class="subheading font-weight-thin">
@@ -98,11 +98,11 @@
         </v-flex>
         <v-flex xs12 md6>
           <v-flex>
-            <p class="headline mb-0">Map Should Go Here!!</p>
+            <p class="headline mb-0">Map</p>
             <v-divider></v-divider>
             <br>
             <template>
-              <l-map :zoom="zoom" :center="center" style="height: 400px;">
+              <l-map :zoom="zoom" :center="center" style="height: 400px; z-index: 1;">
                 <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
                 <l-geo-json :geojson="geojson"></l-geo-json>
               </l-map>
